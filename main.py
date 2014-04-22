@@ -13,9 +13,13 @@ import usb.util
 # MagTek Device MSR100 Mini Swipe
 vendorid = 0x0801
 productid = 0x0001
+# **NOTE** At http://www.micahcarrick.com/credit-card-reader-pyusb.html "0x0002" is used but this is not the case
+# To find your Vendor ID and/or Product ID type "lsusb" and look for your reader...
+# Once found, your id's will appear as: VendorID:ProductID 
 
 # Define our Character Map per Reference Manual
 # http://www.magtek.com/documentation/public/99875206-17.01.pdf
+# The Reference Manual IS included...
 
 chrMap = {
     4:  'a',
@@ -129,7 +133,7 @@ shiftchrMap = {
     57: 'KEY_CAPSLOCK'
 }
 
-# find our device by id
+# find our device by id 
 device = usb.core.find(idVendor=vendorid, idProduct=productid)
 if device is None:
     raise Exception('Could not find USB Card Reader')
